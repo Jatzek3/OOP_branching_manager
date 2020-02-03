@@ -11,7 +11,7 @@ class Branch:
         self.subbranches_length = self.calculate_subbranches()
 
     def rename(self):
-        """Change the name of the leaf"""
+        """Change the name of the branch"""
         self.name = input("Enter new name for the leaf")
         return self.name
 
@@ -64,18 +64,21 @@ class Branch:
         self.subbranches_length = whole_time
         return self.subbranches_length
 
-    def show_all_branches(self):
-        """ recursive prinitng function"""
-        pass
+    def show_all_subbranches(self):
+        for i in self.subbranches:
+            print(i)
+            if i.subbranches == []:
+                pass
+            else:
+                i.show_all_subbranches()
 
     def __str__(self):
         return f"""
-        This the {str(self.name)} leaf
+        This the {str(self.name)}
         Description : {self.description} 
         Length: {self.time_length} 
         State of completion: {self.completion}
         self.subbranch_id: {self.subbranch_id}
         ********************************* """
-
 
 
