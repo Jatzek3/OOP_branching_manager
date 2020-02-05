@@ -71,6 +71,7 @@ class Branch:
             if i.subbranches == []:
                 pass
             else:
+                print("other branch")
                 i.show_all_subbranches()
 
     def __str__(self):

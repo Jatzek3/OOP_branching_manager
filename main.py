@@ -1,9 +1,19 @@
 from branches import Branch
 
+dir_stack =[]
 
-def choose_branch(branch_entering):
+
+def go_to_upper_branch():
+    if dir_stack != []:
+        return menu(dir_stack.pop())
+    else:
+        pass
+
+
+def choose_subbranch(branch_entering):
     """choose a branch to work with"""
     selected_id = int(input("enter id of branch to work with"))
+    dir_stack.append(branch_entering)
     return menu(branch_entering.subbranches[selected_id])
 
 
@@ -19,7 +29,9 @@ def menu(branch):
         Press 6 and enter to change the state of completion
         Press 7 and enter to show all subbranches
         Press 8 and enter to choose a subbranch
-        Press 9 to inspect this branch
+        Press 9 and enter to inspect this branch
+        Press 10 and enter to go to the upper branch
+        Press 11 and enter to quit
         """)
 
         choice = int(input(">>>"))
@@ -38,10 +50,13 @@ def menu(branch):
         elif choice == 7:
             branch.show_all_subbranches()
         elif choice == 8:
-            choose_branch(branch)
+            choose_subbranch(branch)
         elif choice == 9:
             print(branch)
-
+        elif choice == 10:
+            go_to_upper_branch()
+        elif choice == 11:
+            quit()
 
 
 branch1 = Branch("starting")
