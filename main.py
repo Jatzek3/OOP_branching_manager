@@ -1,7 +1,14 @@
 from branches import Branch
 
 
-def Menu(branch):
+def choose_branch(branch_entering):
+    """choose a branch to work with"""
+    selected_id = int(input("enter id of branch to work with"))
+    return menu(branch_entering.subbranches[selected_id])
+
+
+def menu(branch):
+
     while True:
         print("""
         Press 1 and enter to create new subbranch
@@ -11,9 +18,10 @@ def Menu(branch):
         Press 5 and enter to set time length(in hours) for branch
         Press 6 and enter to change the state of completion
         Press 7 and enter to show all subbranches
-        
+        Press 8 and enter to choose a subbranch
         Press 9 to inspect this branch
         """)
+
         choice = int(input(">>>"))
         if choice == 1:
             branch.create_subbranch()
@@ -29,9 +37,12 @@ def Menu(branch):
             branch.change_completion_state()
         elif choice == 7:
             branch.show_all_subbranches()
+        elif choice == 8:
+            choose_branch(branch)
         elif choice == 9:
             print(branch)
 
 
+
 branch1 = Branch("starting")
-Menu(branch1)
+menu(branch1)

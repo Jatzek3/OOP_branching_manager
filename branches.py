@@ -52,9 +52,10 @@ class Branch:
         """Create a new subbranch which id will be 1 more then before """
         subbranch_name = input("select a name for the subbranch")
         branch = Branch(subbranch_name)
+        branch.subbranch_id = len(self.subbranches)
         self.subbranch_id += 1
         self.subbranches.append(branch)
-        return self.subbranch_id
+        return branch
 
     def calculate_subbranches(self):
         """calculates whole amount of time the subbranches have"""
